@@ -1,0 +1,138 @@
+<div class="space-y-6 p-6">
+  <div class="bg-white shadow p-5 rounded-xl">
+    <h2 class="mb-3 font-semibold text-xl">Tambah Produk Baru</h2>
+    <form (ngSubmit)="submitForm()" class="gap-4 grid grid-cols-2">
+      <div>
+        <label class="block font-medium text-sm">Nama Produk</label>
+        <input
+          type="text"
+          [(ngModel)]="form.name"
+          name="name"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Tipe</label>
+        <input
+          type="text"
+          [(ngModel)]="form.type"
+          name="type"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Warna</label>
+        <input
+          type="text"
+          [(ngModel)]="form.color"
+          name="color"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Satuan</label>
+        <input
+          type="text"
+          [(ngModel)]="form.unit"
+          name="unit"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Harga</label>
+        <input
+          type="number"
+          [(ngModel)]="form.price"
+          name="price"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Stok Minimum</label>
+        <input
+          type="number"
+          [(ngModel)]="form.min_stock"
+          name="min_stock"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">Stok Sekarang</label>
+        <input
+          type="number"
+          [(ngModel)]="form.current_stock"
+          name="current_stock"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block font-medium text-sm">ID Supplier</label>
+        <input
+          type="number"
+          [(ngModel)]="form.supplier_id"
+          name="supplier_id"
+          required
+          class="mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="col-span-2 bg-blue-900 hover:bg-blue-700 py-2 rounded-lg text-white transition"
+      >
+        {{ loading ? 'Menyimpan...' : 'Tambah Produk' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="bg-white shadow p-5 rounded-xl overflow-x-auto">
+    <h2 class="mb-3 font-semibold text-xl">Daftar Produk</h2>
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-left">
+          <th class="p-2 border">Nama</th>
+          <th class="p-2 border">Tipe</th>
+          <th class="p-2 border">Warna</th>
+          <th class="p-2 border">Satuan</th>
+          <th class="p-2 border">Harga</th>
+          <th class="p-2 border">Min Stok</th>
+          <th class="p-2 border">Stok Sekarang</th>
+          <th class="p-2 border">Supplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" class="hover:bg-gray-50 border-b">
+          <td class="p-2">{{ product.name }}</td>
+          <td class="p-2">{{ product.type }}</td>
+          <td class="p-2">{{ product.color }}</td>
+          <td class="p-2">{{ product.unit }}</td>
+          <td class="p-2">{{ product.price }}</td>
+          <td class="p-2">{{ product.min_stock }}</td>
+          <td class="p-2">{{ product.current_stock }}</td>
+          <td class="p-2">{{ product.supplier_id }}</td>
+        </tr>
+
+        <tr *ngIf="products.length === 0">
+          <td colspan="8" class="p-4 text-gray-500 text-center">
+            Belum ada data produk
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

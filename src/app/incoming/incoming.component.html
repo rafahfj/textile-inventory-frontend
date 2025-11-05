@@ -1,0 +1,82 @@
+<div class="mx-auto p-6 max-w-5xl">
+  <!-- Form tambah transaksi -->
+  <div class="bg-white shadow mb-5 p-5 rounded-xl">
+    <h1 class="mb-6 font-semibold text-2xl">Transaksi Barang Masuk</h1>
+    <form (ngSubmit)="addTransaction()" class="gap-4 grid grid-cols-2 mb-8">
+      <div>
+        <label class="block mb-1 font-medium text-sm">ID Produk</label>
+        <input
+          type="number"
+          [(ngModel)]="newTransaction.product_id"
+          name="product_id"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-sm">Jumlah Masuk</label>
+        <input
+          type="number"
+          [(ngModel)]="newTransaction.qty"
+          name="quantity"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-sm">Tanggal</label>
+        <input
+          type="date"
+          [(ngModel)]="newTransaction.date"
+          name="date"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-sm">Catatan</label>
+        <input
+          type="text"
+          [(ngModel)]="newTransaction.note"
+          name="note"
+          class="px-3 py-2 border border-gray-300 rounded-lg w-full"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="col-span-2 bg-blue-900 hover:bg-blue-700 py-2 rounded-lg text-white transition"
+      >
+        {{ loading ? 'Menyimpan...' : 'Tambah Transaksi' }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Tabel transaksi -->
+  <div class="bg-white shadow rounded-lg overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-left">
+          <th class="p-3 border-b">ID</th>
+          <th class="p-3 border-b">Produk ID</th>
+          <th class="p-3 border-b">Jumlah</th>
+          <th class="p-3 border-b">Tanggal</th>
+          <th class="p-3 border-b">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of transactions" class="hover:bg-gray-50">
+          <td class="p-3 border-b">{{ t.id }}</td>
+          <td class="p-3 border-b">{{ t.product_id }}</td>
+          <td class="p-3 border-b">{{ t.qty }}</td>
+          <td class="p-3 border-b">{{ t.date }}</td>
+          <td class="p-3 border-b">{{ t.note }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

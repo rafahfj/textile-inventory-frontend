@@ -1,0 +1,85 @@
+<div class="mx-auto p-6 max-w-4xl">
+  <div class="bg-white shadow mb-3 p-5 rounded-xl">
+    <h1 class="mb-6 font-semibold text-2xl">Tambah Supplier</h1>
+    <form (ngSubmit)="addSupplier()" class="gap-4 grid grid-cols-2 mb-8">
+      <div>
+        <label class="block mb-1 font-medium text-sm">Nama Supplier</label>
+        <input
+          type="text"
+          [(ngModel)]="newSupplier.name"
+          name="name"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-sm">Kontak</label>
+        <input
+          type="text"
+          [(ngModel)]="newSupplier.contact"
+          name="contact"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-sm">Alamat</label>
+        <input
+          type="text"
+          [(ngModel)]="newSupplier.address"
+          name="contact"
+          required
+          class="px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 w-full"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="col-span-2 bg-blue-900 hover:bg-blue-700 py-2 rounded-lg text-white transition"
+      >
+        {{ loading ? 'Menyimpan...' : 'Tambah Supplier' }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Tabel supplier -->
+  <div class="bg-white shadow rounded-lg overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-left">
+          <th class="p-3 border-b">ID</th>
+          <th class="p-3 border-b">Nama</th>
+          <th class="p-3 border-b">Kontak</th>
+          <th class="p-3 border-b">Alamat</th>
+          <th class="p-3 border-b text-center">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of suppliers" class="hover:bg-gray-50">
+          <td class="p-3 border-b">{{ s.id }}</td>
+          <td class="p-3 border-b">{{ s.name }}</td>
+          <td class="p-3 border-b">{{ s.contact }}</td>
+          <td class="p-3 border-b">{{ s.address }}</td>
+          <td class="p-3 border-b text-center">
+            <button
+              (click)="deleteSupplier(s.id)"
+              class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-white text-sm"
+            >
+              Hapus
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p
+      *ngIf="suppliers.length === 0"
+      class="py-4 text-gray-500 text-sm text-center"
+    >
+      Tidak ada data supplier.
+    </p>
+  </div>
+</div>
