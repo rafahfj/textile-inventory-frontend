@@ -45,7 +45,7 @@ export class UsersPage implements OnInit {
   registerUser() {
     this.usersService.registUsers(this.newUser.value).subscribe({
       next: (data) => {
-        console.log('User registered successfully:', data);
+        'User registered successfully:', data;
         this.ngOnInit(); // Refresh the user list
       },
       error: (err) => {

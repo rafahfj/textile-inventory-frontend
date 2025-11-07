@@ -18,7 +18,7 @@ export class DashboardPage implements OnInit {
   ngOnInit(): void {
     this.dashboardService.getSummary().subscribe({
       next: (data) => {
-        console.log(data);
+        data;
         this.summary = data;
         this.loading = false;
       },
