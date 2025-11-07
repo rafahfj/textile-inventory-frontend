@@ -14,7 +14,6 @@ export class LogedinLayout implements OnInit {
   user = JSON.parse(localStorage.getItem('info') as string);
 
   ngOnInit() {
-    this.user.user_id;
     this.auth.checkLoginStatus().subscribe({
       next: (info: any) => {
         localStorage.setItem('info', JSON.stringify(info));

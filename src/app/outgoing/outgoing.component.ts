@@ -27,7 +27,7 @@ export class OutgoingComponent implements OnInit {
 
   fetchTransactions() {
     this.outgoingService.getTransactions().subscribe({
-      next: (res) => ((this.transactions = res), res),
+      next: (res) => (this.transactions = res),
       error: (err) => console.error('Gagal mengambil data transaksi:', err),
     });
   }
