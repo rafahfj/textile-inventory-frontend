@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError, tap } from 'rxjs';
+import baseURL from './env';
 
 @Injectable({ providedIn: 'root' })
 export class SuppliersService {
-  private apiUrl = 'http://localhost:8080/suppliers';
+  private apiUrl = baseURL + '/suppliers';
 
   constructor(private http: HttpClient) {}
 

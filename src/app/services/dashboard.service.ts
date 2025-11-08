@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import baseURL from './env';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardService {
-  private baseUrl = 'http://localhost:8080/dashboard'; // endpoint API backend kamu
+  private baseUrl = baseURL + '/dashboard'; // endpoint API backend kamu
 
   constructor(private http: HttpClient) {}
 

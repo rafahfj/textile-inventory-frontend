@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError, tap } from 'rxjs';
+import baseURL from './env';
 
 @Injectable({ providedIn: 'root' })
 export class OutgoingService {
-  private apiUrl = 'http://localhost:8080/outgoing';
+  private apiUrl = baseURL + '/outgoing';
   user: any | null = null;
 
   private getUserFromCookie(): any | null {

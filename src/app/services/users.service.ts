@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import baseURL from './env';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = baseURL + '/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -14,7 +15,7 @@ export class UsersService {
   }
 
   registUsers(data: any) {
-    return this.http.post<any[]>(`${this.baseUrl}/regist`, data, {
+    return this.http.post<any[]>(`${this.baseUrl}/register`, data, {
       withCredentials: true,
     });
   }
